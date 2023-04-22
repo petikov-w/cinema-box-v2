@@ -1,23 +1,24 @@
 import React from 'react';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
-import { catalogLoader } from './pages/CatalogPage'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+
+import { catalogLoader } from './pages/CatalogPage';
 // import styled from 'styled-components';
 
-import { HomePage } from "./pages/HomePage";
-import { CatalogPage } from "./pages/CatalogPage";
-import { SinglePage } from "./pages/SinglePage";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { Layout } from "./components/Layout";
+import { HomePage } from './pages/HomePage';
+import { CatalogPage } from './pages/CatalogPage';
+import { SinglePage } from './pages/SinglePage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { Layout } from './components/Layout';
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Layout />} >
         <Route index element={<HomePage />} />
-        <Route path="films" element={<CatalogPage />} loader={catalogLoader} />
+        <Route path="films" element={<CatalogPage />} />
         <Route path="films/:id" element={<SinglePage />} />
         {/* <Route path="/country/:name" component={Details} */}
         <Route path="*" element={<NotFoundPage />} />
     </Route>
-))
+));
 
 const App = () => {
 
@@ -25,7 +26,7 @@ const App = () => {
         <>
             <RouterProvider router={router} />
         </>
-    )
-}
+    );
+};
 
-export default App
+export default App;

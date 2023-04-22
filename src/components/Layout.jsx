@@ -1,8 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import React from 'react';
+
+import styled from 'styled-components';
+
 import { Footer } from './Footer';
 import { Header } from './Header';
-import styled from 'styled-components';
 
 
 const Main = styled.div` 

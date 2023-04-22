@@ -1,5 +1,5 @@
-import { Card } from './Card'
-import { CardsWrapper } from './styles/Cards.styled'
+import { Card } from './Card';
+import { CardsWrapper } from './styles/Cards.styled';
 
 export const Cards = (props) => {
   const { films } = props;
@@ -10,4 +10,4 @@ export const Cards = (props) => {
         ))}
       </CardsWrapper>
   );
-}
+};

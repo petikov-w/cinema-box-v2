@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CardsWrapper = styled.div`          
     display: grid;
@@ -10,4 +10,4 @@ export const CardsWrapper = styled.div`
     @media (max-width: 500px) {
         justify-content: center;
     }
-`
+`;

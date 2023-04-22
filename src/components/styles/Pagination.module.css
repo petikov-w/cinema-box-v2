@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.pagination {
+  background-color: var(--colors-bg);
+  color: #ffffff !important;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  border: none;
+  box-shadow: -0px 0px 0px 0px rgba(255, 255, 255, 0.2);
+}
+
+.MuiPaginationItem-text {}

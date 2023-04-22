@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 
 export const Copyright = styled.a.attrs({
     href: 'https://kroxdev.ru',
-    target: '_blank'
+    target: '_blank',
 })`
    color: var(--colors-text);
    font-size: var(--fs-sm);

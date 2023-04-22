@@ -16,16 +16,16 @@ export const BackButton = styled.button`
     margin-bottom: 2rem; 
     border-radius: 5px;
     border: none;
-`
+`;
 export const SingleFilmSection = styled.div`
     display: flex;
     justify-self: flex-start;
     
-`
+`;
 export const InfoBoxLeft = styled.div`
 border: none;
-`
+`;
 
 export const InfoBoxRight = styled.div`
     margin-left: 3rem;
-`
+`;
