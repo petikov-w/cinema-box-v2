@@ -4,13 +4,14 @@ import styled from 'styled-components';
 export const HeaderEl = styled.header`
   box-shadow: var(--shadow);
   background-color: var(--colors-ui-base);  
+   /* position: sticky; 
+   top: 0;  */
 `;
 
 export const Wrapper = styled.div` 
    display: flex;
    justify-content: space-between;
-   align-items: center;   
-   /* padding: 1rem 0; */
+   align-items: center; 
 `;
 
 export const WrapperNav = styled.div` 

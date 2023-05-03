@@ -3,8 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
+import {Container} from '@mui/material';
 
-import { Container } from './styles/Container.styled';
+// import { Container } from './styles/Container.styled';
 import { HeaderEl, Wrapper, WrapperNav, WrapperRight, ModeSwitcher } from './styles/Header.styled';
 import { LogoLink } from './styles/Link.styled';
 
@@ -22,13 +23,14 @@ export const Header = () => {
 
     return (
         <HeaderEl>
-            <Container>          
+            <Container maxWidth="lg">          
                 <Wrapper>
                     <LogoLink to="/">КИНО</LogoLink>
                     <WrapperRight>
                         <WrapperNav>
                             <NavLink to="/">Главная</NavLink>
-                            <NavLink to="/films">Каталог</NavLink>   
+                            <NavLink to="/films?page=1">Каталог</NavLink>   
+                            {/* <NavLink to="/films">Каталог</NavLink>    */}
                         </WrapperNav>                                     
                         <ModeSwitcher onClick={toggleTheme}>
                             { theme==='light' ? (

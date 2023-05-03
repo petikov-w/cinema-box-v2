@@ -1,16 +1,19 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import {PosterFilm, BackButton, InfoBoxLeft, InfoBoxRight,SingleFilmSection} from './styles/Single.styled';
 
 export const Single = (props) => {
+    
     const {film} = props;
     const navigate = useNavigate();
     const goBack = () => navigate(-1);   
     const preLoader = '';
     // const preLoader = <h3>Загрузка...</h3>;
-    
+    const loc = useLocation();
+    // console.log('--single--> ', loc);
+    localStorage.setItem('isSingle', true);
     return (
         <>
             { film.length !== 0 ? 

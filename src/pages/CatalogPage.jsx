@@ -1,59 +1,72 @@
 import { useState, useEffect } from 'react';
-//import { useLoaderData } from 'react-router-dom';
+import { Link as NavLink, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import Stack from '@mui/material/Stack';
-import Pagination from '@mui/material/Pagination';
+import {Pagination, PaginationItem} from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import styles from '../components/styles/Pagination.module.css';
+import { theme } from '../components/styles/Pagination.styled';
 import { Cards } from '../components/Cards';
-import { Container } from '../components/styles/Container.styled';
 import {api_query} from '../components/Api';
 
-export const CatalogPage = () => {
+export const CatalogPage = (props) => {
+      
+     const [searchParams, setSearchParams] = useSearchParams();
      const [films, setFilms] = useState([]);
-     const [currentPage, setCurrentPage] = useState(1); // текущая страница
+     const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
      const [pagesCount, setPagesCount ] = useState(0);
-
-     const handleChange = (event, p) => { setCurrentPage(p); };
-
-     const stylePagination = [styles.pagination, styles.container, styles.MuiPaginationItemText].join(' ');  
-        
     
+     const handleChange = (event, p) => { setPage(p); };
 
-    console.log('===0000=films==>>>>  ', films); 
-    console.log('===0001=films==>>>>  ', pagesCount); 
-    
+    //  const stylePagination = [styles.pagination, styles.container, styles.MuiPaginationUl].join(' ');  
 
     // eslint-disable-next-line no-unused-expressions
-    useEffect(()=>{api_query(currentPage).then((data) => {setFilms(data.films), setPagesCount(data.pagesCount)});}, []);
-    // eslint-disable-next-line no-unused-expressions
-    useEffect(()=>{api_query(currentPage).then((data) => {setFilms(data.films), setPagesCount(data.pagesCount)});}, [currentPage]);
+    useEffect(()=>{api_query(page).then((data) => {setFilms(data.films)
+                                                   setPagesCount(data.pagesCount)                                                   
+                                                });}, []);
 
-             
+    // eslint-disable-next-line no-unused-expressions
+    useEffect(()=>{api_query(page).then((data) => {setFilms(data.films)
+                                                   setPagesCount(data.pagesCount)
+                                                   });}, [page]);
+
+                
      
     return (  
         <>
          <Helmet>
             <title>Cinema Box - Каталог</title>
          </Helmet>
-        <Container>
+        {/* <Container> */}
             <h1>Каталог</h1>   
             <Stack spacing={2}>
-              
-                <Pagination count={pagesCount}
-                            color="primary"
-                            className={stylePagination}
-                            page={currentPage}
+              <ThemeProvider theme={theme}>
+                <Pagination count={pagesCount} 
+                            color="primary"                               
+                            page={page}  
                             onChange={handleChange}
-                />
-               
+                            sx={{marginY: 3,
+                                 marginX: 'auto',
+                                 color: 'text.primary',
+                            }}
+                            renderItem={
+                                (item) =>(  
+                                  <PaginationItem                                     
+                                     component={NavLink}
+                                     to={`/films?page=${item.page}`}
+                                     {...item}
+                                     />   
+                                )
+                            }
+                />               
+              </ThemeProvider>
+                
             </Stack>
-
 
             {films.length ? (<Cards films={films} />) 
                                     : (<h3>Загрузка...</h3>)}      
-        </Container>           
+        {/* </Container>            */}
         </>      
        
     );
@@ -61,11 +74,11 @@ export const CatalogPage = () => {
 
 
 
-export const catalogLoader = async ({request, params}) => {                  
-    const res = await fetch(`${process.env.REACT_APP_API_TOP}`+localStorage.getItem('currentPagePagination'), {
-        headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}`}});    
-    return res.json();
-};
+// export const catalogLoader = async ({request, params}) => {                  
+//     const res = await fetch(`${process.env.REACT_APP_API_TOP}`+localStorage.getItem('currentPagePagination'), {
+//         headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}`}});    
+//     return res.json();
+// };
 
 
 

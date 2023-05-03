@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import React from 'react';
+import {Container} from '@mui/material';
 
 import styled from 'styled-components';
 
@@ -15,11 +16,15 @@ const Main = styled.div`
 const Layout = () => {
     return (
         <>
-            <Header />           
-            <Main>
-                <Outlet />   
-            </Main>                  
-            <Footer />           
+         
+            <Header />     
+               <Container maxWidth="lg">
+                    <Main>
+                        <Outlet />   
+                    </Main>      
+               </Container>   
+            <Footer /> 
+                      
         </>
     );
 };

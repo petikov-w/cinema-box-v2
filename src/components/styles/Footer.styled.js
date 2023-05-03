@@ -14,11 +14,12 @@ export const Wrapper = styled.div`
 
 
 export const Copyright = styled.a.attrs({
-    href: 'https://kroxdev.ru',
-    target: '_blank',
+   href: 'https://kroxdev.ru',
+   target: '_blank',
 })`
    color: var(--colors-text);
    font-size: var(--fs-sm);
    font-weight: var(--fw-light);
    text-decoration: none;
+   margin-right: -25px;
   `;

@@ -1,6 +1,6 @@
 import React from 'react';
+import {Container} from '@mui/material';
 
-import { Container } from './styles/Container.styled';
 import { LogoLink } from './styles/Link.styled';
 import { FooterEl, Wrapper, Copyright } from './styles/Footer.styled';
 
@@ -8,12 +8,12 @@ import { FooterEl, Wrapper, Copyright } from './styles/Footer.styled';
 export const Footer = () => {
     return (
         <FooterEl>
-            <Container>          
+            <Container maxWidth="lg">
                 <Wrapper>
                     <LogoLink to="/">КИНО</LogoLink>
                     <Copyright>© {new Date().getFullYear()} Petikov Vladimir</Copyright>                    
                 </Wrapper>
-            </Container>            
+            </Container>               
         </FooterEl>
     );
 };
